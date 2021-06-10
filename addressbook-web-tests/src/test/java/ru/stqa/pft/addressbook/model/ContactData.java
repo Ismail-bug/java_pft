@@ -1,31 +1,31 @@
 package ru.stqa.pft.addressbook.model;
 
 public class ContactData {
-    private final String firstname;
-    private final String middlename;
-    private final String lastname;
-    private final String nick;
-    private final String title;
-    private final String company;
-    private final String address;
-    private final String homeaddress;
-    private final String mobilenumber;
-    private final String worknumber;
-    private final String fax;
-    private final String mail;
-    private final String reservemail;
-    private final String extramail;
-    private final String domen;
-    private final String birthday;
-    private final String birthdaymonth;
-    private final String birthdayyear;
-    private final String anniversaryday;
-    private final String anniversarymonth;
-    private final String anniversaryyear;
-    private final String selectgroup;
-    private final String reserveaddress;
-    private final String notes;
-    private final String secondhome;
+    public  String firstname;
+    public  String middlename;
+    public  String lastname;
+    public  String nick;
+    public  String title;
+    public  String company;
+    public  String address;
+    public  String homeaddress;
+    public  String mobilenumber;
+    public  String worknumber;
+    public  String fax;
+    public  String mail;
+    public  String reservemail;
+    public  String extramail;
+    public  String domen;
+    public  String birthday;
+    public  String birthdaymonth;
+    public  String birthdayyear;
+    public  String anniversaryday;
+    public  String anniversarymonth;
+    public  String anniversaryyear;
+    public  String selectgroup;
+    public  String reserveaddress;
+    public  String notes;
+    public  String secondhome;
 
     public ContactData(String firstname, String middlename, String lastname, String nick, String title, String company, String address, String homeaddress, String mobilenumber, String worknumber, String fax, String mail, String reservemail, String extramail, String domen, String birthday, String birthdaymonth, String birthdayyear, String anniversaryday, String anniversarymonth, String anniversaryyear, String selectgroup, String reserveaddress, String notes, String secondhome) {
         this.firstname = firstname;
