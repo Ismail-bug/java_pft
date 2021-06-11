@@ -55,6 +55,7 @@ public class ContactData {
         this.secondhome = secondhome;
     }
 
+
     public String getFirstname() {
         return firstname;
     }
