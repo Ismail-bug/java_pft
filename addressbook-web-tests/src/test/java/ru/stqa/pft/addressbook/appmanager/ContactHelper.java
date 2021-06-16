@@ -7,6 +7,7 @@ import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 
+
 public class ContactHelper extends HelperBase {
     public ContactHelper(WebDriver wd) {
         super(wd);
@@ -73,4 +74,25 @@ public class ContactHelper extends HelperBase {
     public void updateContact() {
         click(By.xpath("(//input[@name='update'])[2]"));
     }
+
+    public void createContact(ContactData contact, boolean creation) {
+        goToNewContact();
+        fillContactForm(contact,creation);
+        createNewContact();
+        returnToHomePage();
     }
+
+    private void goToNewContact() {
+        if (isElementPresent(By.tagName("h1"))
+                && wd.findElement(By.tagName("h1")).getText().equals("Edit / add address book entry")
+                && isElementPresent(By.name("submit"))){
+            return;
+        }
+        click(By.linkText("add new"));
+    }
+
+    public boolean isThereAContact() {
+        return isElementPresent(By.name("selected[]"));
+    }
+}
+
