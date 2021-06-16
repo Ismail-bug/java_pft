@@ -141,9 +141,8 @@ public class ContactData {
     }
 
     public String getSelectgroup() {
-        return selectgroup;
+            return selectgroup;
     }
-
     public String getReserveaddress() {
         return reserveaddress;
     }
@@ -156,3 +155,4 @@ public class ContactData {
         return secondhome;
     }
 }
+

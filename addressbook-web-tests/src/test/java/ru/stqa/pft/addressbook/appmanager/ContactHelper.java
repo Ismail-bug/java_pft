@@ -1,9 +1,10 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
-import ru.stqa.pft.addressbook.model.ContactUpdateData;
 
 
 public class ContactHelper extends HelperBase {
@@ -19,7 +20,7 @@ public class ContactHelper extends HelperBase {
         click(By.xpath("(//input[@name='submit'])[2]"));
     }
 
-    public void fillContactForm(ContactData contactData) {
+    public void fillContactForm(ContactData contactData, boolean creation) {
         type(By.name("firstname"), contactData.getFirstname());
         type(By.name("middlename"), contactData.getMiddlename());
         type(By.name("lastname"), contactData.getLastname());
@@ -42,12 +43,25 @@ public class ContactHelper extends HelperBase {
         selectelement("aday", contactData.getAnniversaryday());
         selectelement("amonth", contactData.getAnniversarymonth());
         type(By.name("ayear"), contactData.getAnniversaryyear());
-        selectelement("new_group", contactData.getSelectgroup());
+        if (creation){
+            selectelement("new_group", contactData.getSelectgroup());
+        } else {
+            Assert.assertFalse(iselementPresent(By.name("new_group")));
+
+        }
         type(By.name("address2"), contactData.getReserveaddress());
         type(By.name("phone2"), contactData.getSecondhome());
         type(By.name("notes"), contactData.getNotes());
     }
 
+    private boolean iselementPresent(By locator) {
+        try {
+            wd.findElement(locator);
+            return true;
+        } catch (NoSuchElementException ex) {
+            return false;
+        }
+    }
     public void selectContact() {
         click(By.name("selected[]"));
     }
@@ -60,38 +74,11 @@ public class ContactHelper extends HelperBase {
         wd.switchTo().alert().accept();
     }
 
-    public void editContactd() {
+    public void editContact() {
         click(By.xpath("//img[@alt='Edit']"));
     }
 
     public void updateContact() {
         click(By.xpath("(//input[@name='update'])[2]"));
-    }
-    public void fillContactUpdate(ContactUpdateData contactUpdateData) {
-        type(By.name("firstname"), contactUpdateData.getFirstname());
-        type(By.name("middlename"), contactUpdateData.getMiddlename());
-        type(By.name("lastname"), contactUpdateData.getLastname());
-        type(By.name("nickname"), contactUpdateData.getNick());
-        type(By.name("title"), contactUpdateData.getTitle());
-        type(By.name("company"), contactUpdateData.getCompany());
-        type(By.name("address"), contactUpdateData.getAddress());
-        type(By.name("home"), contactUpdateData.getHomeaddress());
-        type(By.name("mobile"), contactUpdateData.getMobilenumber());
-        type(By.name("work"), contactUpdateData.getWorknumber());
-        type(By.name("fax"), contactUpdateData.getFax());
-        type(By.name("email"), contactUpdateData.getMail());
-        type(By.name("email2"), contactUpdateData.getReservemail());
-        type(By.name("email3"), contactUpdateData.getExtramail());
-        type(By.name("homepage"), contactUpdateData.getDomen());
-        selectelement("bday", contactUpdateData.getBirthday());
-        selectelement("bmonth", contactUpdateData.getBirthdaymonth());
-        selectelement("bmonth", contactUpdateData.getBirthdaymonth());
-        type(By.name("byear"), contactUpdateData.getBirthdayyear());
-        selectelement("aday", contactUpdateData.getAnniversaryday());
-        selectelement("amonth", contactUpdateData.getAnniversarymonth());
-        type(By.name("ayear"), contactUpdateData.getAnniversaryyear());
-        type(By.name("address2"), contactUpdateData.getReserveaddress());
-        type(By.name("phone2"), contactUpdateData.getSecondhome());
-        type(By.name("notes"), contactUpdateData.getNotes());
     }
     }
