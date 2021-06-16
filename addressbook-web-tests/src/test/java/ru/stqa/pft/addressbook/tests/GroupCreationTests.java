@@ -13,11 +13,7 @@ public class GroupCreationTests extends TestBase {
     public void testGroupCreation() throws Exception {
 
         app.getNavigationHelper().gotoGroupPage();
-        app.getGroupHelper().initGroupCreation();
-        app.getGroupHelper().fillGroupForm(new GroupData("test1", "test2", "test3"));
-        app.getGroupHelper().sumbitGroupCreation();
-        app.getGroupHelper().returnToGroupPage();
-        app.getGroupHelper().wd.findElement(By.linkText("Logout")).click();
+        app.getGroupHelper().createGroup(new GroupData("test1", "test2", "test3"));
     }
 
 

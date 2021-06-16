@@ -46,7 +46,7 @@ public class ContactHelper extends HelperBase {
         if (creation){
             selectelement("new_group", contactData.getSelectgroup());
         } else {
-            Assert.assertFalse(iselementPresent(By.name("new_group")));
+            Assert.assertFalse(isElementPresent(By.name("new_group")));
 
         }
         type(By.name("address2"), contactData.getReserveaddress());
@@ -54,14 +54,6 @@ public class ContactHelper extends HelperBase {
         type(By.name("notes"), contactData.getNotes());
     }
 
-    private boolean iselementPresent(By locator) {
-        try {
-            wd.findElement(locator);
-            return true;
-        } catch (NoSuchElementException ex) {
-            return false;
-        }
-    }
     public void selectContact() {
         click(By.name("selected[]"));
     }
