@@ -28,9 +28,11 @@ public class HelperBase {
         }
     }
     public void selectelement(String fieldname, String selectdropdown) {
-        new Select(wd.findElement(By.name(fieldname))).selectByVisibleText(selectdropdown);
-        wd.findElement(By.name(fieldname)).click();
-    }
+        if (selectdropdown != null) {
+            new Select(wd.findElement(By.name(fieldname))).selectByVisibleText(selectdropdown);
+            wd.findElement(By.name(fieldname)).click();
+            }
+        }
 
     public boolean isAlertPresent() {
         try {
