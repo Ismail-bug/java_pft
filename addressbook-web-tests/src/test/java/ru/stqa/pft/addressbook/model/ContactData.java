@@ -1,7 +1,10 @@
 package ru.stqa.pft.addressbook.model;
 
 
+import java.util.Objects;
+
 public class ContactData  {
+    public  int id;
     public  String firstname;
     public  String middlename;
     public  String lastname;
@@ -28,7 +31,8 @@ public class ContactData  {
     public  String notes;
     public  String secondhome;
 
-    public ContactData(String firstname, String middlename, String lastname, String nick, String title, String company, String address, String homeaddress, String mobilenumber, String worknumber, String fax, String mail, String reservemail, String extramail, String domen, String birthday, String birthdaymonth, String birthdayyear, String anniversaryday, String anniversarymonth, String anniversaryyear, String selectgroup, String reserveaddress, String notes, String secondhome) {
+    public ContactData(int id, String firstname, String middlename, String lastname, String nick, String title, String company, String address, String homeaddress, String mobilenumber, String worknumber, String fax, String mail, String reservemail, String extramail, String domen, String birthday, String birthdaymonth, String birthdayyear, String anniversaryday, String anniversarymonth, String anniversaryyear, String selectgroup, String reserveaddress, String notes, String secondhome) {
+        this.id = id;
         this.firstname = firstname;
         this.middlename = middlename;
         this.lastname = lastname;
@@ -55,7 +59,37 @@ public class ContactData  {
         this.notes = notes;
         this.secondhome = secondhome;
     }
-
+    public ContactData(String firstname, String middlename, String lastname, String nick, String title, String company, String address, String homeaddress, String mobilenumber, String worknumber, String fax, String mail, String reservemail, String extramail, String domen, String birthday, String birthdaymonth, String birthdayyear, String anniversaryday, String anniversarymonth, String anniversaryyear, String selectgroup, String reserveaddress, String notes, String secondhome) {
+        this.id = Integer.MAX_VALUE;
+        this.firstname = firstname;
+        this.middlename = middlename;
+        this.lastname = lastname;
+        this.nick = nick;
+        this.title = title;
+        this.company = company;
+        this.address = address;
+        this.homeaddress = homeaddress;
+        this.mobilenumber = mobilenumber;
+        this.worknumber = worknumber;
+        this.fax = fax;
+        this.mail = mail;
+        this.reservemail = reservemail;
+        this.extramail = extramail;
+        this.domen = domen;
+        this.birthday = birthday;
+        this.birthdaymonth = birthdaymonth;
+        this.birthdayyear = birthdayyear;
+        this.anniversaryday = anniversaryday;
+        this.anniversarymonth = anniversarymonth;
+        this.anniversaryyear = anniversaryyear;
+        this.selectgroup = selectgroup;
+        this.reserveaddress = reserveaddress;
+        this.notes = notes;
+        this.secondhome = secondhome;
+    }
+    public int getId() {
+        return id;
+    }
 
     public String getFirstname() {
         return firstname;
@@ -154,6 +188,31 @@ public class ContactData  {
 
     public String getSecondhome() {
         return secondhome;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "ContactData{" +
+                "firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ContactData that = (ContactData) o;
+        return Objects.equals(firstname, that.firstname) && Objects.equals(lastname, that.lastname);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstname, lastname);
     }
 }
 
