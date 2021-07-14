@@ -7,18 +7,18 @@ import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class GroupHelper extends HelperBase {
+
+    private Groups groupCache = null;
 
     public GroupHelper(WebDriver wd) {
         super(wd);
     }
 
     public void returnToGroupPage() {
-        click(By.linkText("group page"));
+        click(By.linkText("groups"));
     }
 
     public void sumbitGroupCreation() {
@@ -43,9 +43,10 @@ public class GroupHelper extends HelperBase {
 
         wd.findElements(By.name("selected[]")).get(index).click();
     }
+
     public void selecrGroupById(int id) {
 
-        wd.findElement(By.cssSelector("input[value='"+ id + "']")).click();
+        wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
     }
 
     public void initGroupModification() {
@@ -60,23 +61,29 @@ public class GroupHelper extends HelperBase {
         initGroupCreation();
         fillGroupForm(group);
         sumbitGroupCreation();
+        groupCache = null;
         returnToGroupPage();
     }
+
     public void modify(GroupData group) {
         selecrGroupById(group.getId());
         initGroupModification();
         fillGroupForm(group);
         sumbitGroupModification();
+        groupCache = null;
         returnToGroupPage();
     }
+
     public void delete(int index) {
         selecrGroup(index);
         deleteSelectedGroups();
         returnToGroupPage();
     }
+
     public void delete(GroupData group) {
         selecrGroupById(group.getId());
         deleteSelectedGroups();
+        groupCache = null;
         returnToGroupPage();
     }
 
@@ -84,7 +91,7 @@ public class GroupHelper extends HelperBase {
         return isElementPresent(By.name("selected[]"));
     }
 
-    public int getGroupCount() {
+    public int count() {
         return wd.findElements(By.name("selected[]")).size();
     }
 
@@ -98,15 +105,19 @@ public class GroupHelper extends HelperBase {
         }
         return groups;
     }
+
     public Groups all() {
-        Groups groups = new Groups();
+        if (groupCache != null) {
+            return new Groups(groupCache);
+        }
+        groupCache = new Groups();
         List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
         for (WebElement element : elements) {
             String name = element.getText();
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-            groups.add(new GroupData().withId(id).withName(name).withHeader(null).withFooter(null));
+            groupCache.add(new GroupData().withId(id).withName(name).withHeader(null).withFooter(null));
         }
-        return groups;
+        return new Groups(groupCache);
     }
 
 
