@@ -3,33 +3,35 @@ package ru.stqa.pft.addressbook.model;
 
 import java.util.Objects;
 
-public class ContactData  {
-    public  int id = Integer.MAX_VALUE;
-    public  String firstname;
-    public  String middlename;
-    public  String lastname;
-    public  String nick;
-    public  String title;
-    public  String company;
-    public  String address;
-    public  String homeaddress;
-    public  String mobilenumber;
-    public  String worknumber;
-    public  String fax;
-    public  String mail;
-    public  String reservemail;
-    public  String extramail;
-    public  String domen;
-    public  String birthday;
-    public  String birthdaymonth;
-    public  String birthdayyear;
-    public  String anniversaryday;
-    public  String anniversarymonth;
-    public  String anniversaryyear;
-    public  String selectgroup;
-    public  String reserveaddress;
-    public  String notes;
-    public  String secondhome;
+public class ContactData {
+    public int id = Integer.MAX_VALUE;
+    public String firstname;
+    public String middlename;
+    public String lastname;
+    public String nick;
+    public String title;
+    public String company;
+    public String address;
+    public String homeaddress;
+    public String mobilenumber;
+    public String worknumber;
+    public String fax;
+    public String mail;
+    public String reservemail;
+    public String extramail;
+    public String domen;
+    public String birthday;
+    public String birthdaymonth;
+    public String birthdayyear;
+    public String anniversaryday;
+    public String anniversarymonth;
+    public String anniversaryyear;
+    public String selectgroup;
+    public String reserveaddress;
+    public String notes;
+    public String secondhome;
+    public String allPhones;
+    public String allMails;
 
 
     public int getId() {
@@ -121,8 +123,9 @@ public class ContactData  {
     }
 
     public String getSelectgroup() {
-            return selectgroup;
+        return selectgroup;
     }
+
     public String getReserveaddress() {
         return reserveaddress;
     }
@@ -135,10 +138,20 @@ public class ContactData  {
         return secondhome;
     }
 
+    public String getAllPhones() {
+        return allPhones;
+    }
+
+    public String getAllMails() {
+        return allMails;
+    }
+
+
     public ContactData withId(int id) {
         this.id = id;
         return this;
     }
+
     public ContactData withFirstname(String firstname) {
         this.firstname = firstname;
         return this;
@@ -264,6 +277,16 @@ public class ContactData  {
         return this;
     }
 
+    public ContactData withAllPhones(String allPhones) {
+        this.allPhones = allPhones;
+        return this;
+    }
+
+    public ContactData withAllMails(String allMails) {
+        this.allMails = allMails;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "ContactData{" +
@@ -285,5 +308,6 @@ public class ContactData  {
     public int hashCode() {
         return Objects.hash(id, firstname, lastname);
     }
+
 }
 
