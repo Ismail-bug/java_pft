@@ -1,37 +1,69 @@
 package ru.stqa.pft.addressbook.model;
 
 
-import java.util.Objects;
+import com.google.gson.annotations.Expose;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
+import java.io.File;
+import java.util.Objects;
+@XStreamAlias("contact")
 public class ContactData {
+    @XStreamOmitField
     public int id = Integer.MAX_VALUE;
+    @Expose
     public String firstname;
+    @Expose
     public String middlename;
+    @Expose
     public String lastname;
+    @Expose
     public String nick;
+    @Expose
     public String title;
+    @Expose
     public String company;
+    @Expose
     public String address;
+    @Expose
     public String homeaddress;
+    @Expose
     public String mobilenumber;
+    @Expose
     public String worknumber;
+    @Expose
     public String fax;
+    @Expose
     public String mail;
+    @Expose
     public String reservemail;
+    @Expose
     public String extramail;
+    @Expose
     public String domen;
+    @Expose
     public String birthday;
+    @Expose
     public String birthdaymonth;
+    @Expose
     public String birthdayyear;
+    @Expose
     public String anniversaryday;
+    @Expose
     public String anniversarymonth;
+    @Expose
     public String anniversaryyear;
+    @Expose
     public String selectgroup;
+    @Expose
     public String reserveaddress;
+    @Expose
     public String notes;
+    @Expose
     public String secondhome;
     public String allPhones;
     public String allMails;
+    public File photo;
 
 
     public int getId() {
@@ -142,9 +174,10 @@ public class ContactData {
         return allPhones;
     }
 
-    public String getAllMails() {
-        return allMails;
-    }
+    public String getAllMails() { return allMails; }
+
+    public File getPhoto() { return photo; }
+
 
 
     public ContactData withId(int id) {
@@ -284,6 +317,10 @@ public class ContactData {
 
     public ContactData withAllMails(String allMails) {
         this.allMails = allMails;
+        return this;
+    }
+    public ContactData withPhoto(File photo) {
+        this.photo = photo;
         return this;
     }
 
