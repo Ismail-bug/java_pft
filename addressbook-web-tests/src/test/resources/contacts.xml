@@ -1,0 +1,137 @@
+<list>
+  <contact>
+    <firstname>test 0</firstname>
+    <middlename>test 0</middlename>
+    <lastname>test 0</lastname>
+    <nick>test 0</nick>
+    <title>test 0</title>
+    <company>test 0</company>
+    <address>test 0</address>
+    <homeaddress>test 0</homeaddress>
+    <mobilenumber>test 0</mobilenumber>
+    <worknumber>test 0</worknumber>
+    <fax>test 0</fax>
+    <mail>test 0</mail>
+    <reservemail>test 0</reservemail>
+    <extramail>test 0</extramail>
+    <domen>test 0</domen>
+    <birthday>1</birthday>
+    <birthdaymonth>January</birthdaymonth>
+    <birthdayyear>1901</birthdayyear>
+    <anniversaryday>1</anniversaryday>
+    <anniversarymonth>January</anniversarymonth>
+    <anniversaryyear>1901</anniversaryyear>
+    <selectgroup>test 0</selectgroup>
+    <reserveaddress>test 0</reserveaddress>
+    <notes>test 0</notes>
+    <secondhome>test 0</secondhome>
+  </contact>
+  <contact>
+    <firstname>test 1</firstname>
+    <middlename>test 1</middlename>
+    <lastname>test 1</lastname>
+    <nick>test 1</nick>
+    <title>test 1</title>
+    <company>test 1</company>
+    <address>test 1</address>
+    <homeaddress>test 1</homeaddress>
+    <mobilenumber>test 1</mobilenumber>
+    <worknumber>test 1</worknumber>
+    <fax>test 1</fax>
+    <mail>test 1</mail>
+    <reservemail>test 1</reservemail>
+    <extramail>test 1</extramail>
+    <domen>test 1</domen>
+    <birthday>1</birthday>
+    <birthdaymonth>January</birthdaymonth>
+    <birthdayyear>1901</birthdayyear>
+    <anniversaryday>1</anniversaryday>
+    <anniversarymonth>January</anniversarymonth>
+    <anniversaryyear>1901</anniversaryyear>
+    <selectgroup>test 1</selectgroup>
+    <reserveaddress>test 1</reserveaddress>
+    <notes>test 1</notes>
+    <secondhome>test 1</secondhome>
+  </contact>
+  <contact>
+    <firstname>test 2</firstname>
+    <middlename>test 2</middlename>
+    <lastname>test 2</lastname>
+    <nick>test 2</nick>
+    <title>test 2</title>
+    <company>test 2</company>
+    <address>test 2</address>
+    <homeaddress>test 2</homeaddress>
+    <mobilenumber>test 2</mobilenumber>
+    <worknumber>test 2</worknumber>
+    <fax>test 2</fax>
+    <mail>test 2</mail>
+    <reservemail>test 2</reservemail>
+    <extramail>test 2</extramail>
+    <domen>test 2</domen>
+    <birthday>1</birthday>
+    <birthdaymonth>January</birthdaymonth>
+    <birthdayyear>1901</birthdayyear>
+    <anniversaryday>1</anniversaryday>
+    <anniversarymonth>January</anniversarymonth>
+    <anniversaryyear>1901</anniversaryyear>
+    <selectgroup>test 2</selectgroup>
+    <reserveaddress>test 2</reserveaddress>
+    <notes>test 2</notes>
+    <secondhome>test 2</secondhome>
+  </contact>
+  <contact>
+    <firstname>test 3</firstname>
+    <middlename>test 3</middlename>
+    <lastname>test 3</lastname>
+    <nick>test 3</nick>
+    <title>test 3</title>
+    <company>test 3</company>
+    <address>test 3</address>
+    <homeaddress>test 3</homeaddress>
+    <mobilenumber>test 3</mobilenumber>
+    <worknumber>test 3</worknumber>
+    <fax>test 3</fax>
+    <mail>test 3</mail>
+    <reservemail>test 3</reservemail>
+    <extramail>test 3</extramail>
+    <domen>test 3</domen>
+    <birthday>1</birthday>
+    <birthdaymonth>January</birthdaymonth>
+    <birthdayyear>1901</birthdayyear>
+    <anniversaryday>1</anniversaryday>
+    <anniversarymonth>January</anniversarymonth>
+    <anniversaryyear>1901</anniversaryyear>
+    <selectgroup>test 3</selectgroup>
+    <reserveaddress>test 3</reserveaddress>
+    <notes>test 3</notes>
+    <secondhome>test 3</secondhome>
+  </contact>
+  <contact>
+    <firstname>test 4</firstname>
+    <middlename>test 4</middlename>
+    <lastname>test 4</lastname>
+    <nick>test 4</nick>
+    <title>test 4</title>
+    <company>test 4</company>
+    <address>test 4</address>
+    <homeaddress>test 4</homeaddress>
+    <mobilenumber>test 4</mobilenumber>
+    <worknumber>test 4</worknumber>
+    <fax>test 4</fax>
+    <mail>test 4</mail>
+    <reservemail>test 4</reservemail>
+    <extramail>test 4</extramail>
+    <domen>test 4</domen>
+    <birthday>1</birthday>
+    <birthdaymonth>January</birthdaymonth>
+    <birthdayyear>1901</birthdayyear>
+    <anniversaryday>1</anniversaryday>
+    <anniversarymonth>January</anniversarymonth>
+    <anniversaryyear>1901</anniversaryyear>
+    <selectgroup>test 4</selectgroup>
+    <reserveaddress>test 4</reserveaddress>
+    <notes>test 4</notes>
+    <secondhome>test 4</secondhome>
+  </contact>
+</list>

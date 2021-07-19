@@ -31,6 +31,7 @@ public class ContactHelper extends HelperBase {
         type(By.name("middlename"), contactData.getMiddlename());
         type(By.name("lastname"), contactData.getLastname());
         type(By.name("nickname"), contactData.getNick());
+        attach(By.name("photo"), contactData.getPhoto());
         type(By.name("title"), contactData.getTitle());
         type(By.name("company"), contactData.getCompany());
         type(By.name("address"), contactData.getAddress());
@@ -49,6 +50,7 @@ public class ContactHelper extends HelperBase {
         selectelement("aday", contactData.getAnniversaryday());
         selectelement("amonth", contactData.getAnniversarymonth());
         type(By.name("ayear"), contactData.getAnniversaryyear());
+
         if (creation) {
             selectelement("new_group", contactData.getSelectgroup());
         } else {
