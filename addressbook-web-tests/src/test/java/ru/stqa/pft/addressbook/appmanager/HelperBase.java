@@ -29,11 +29,12 @@ public class HelperBase {
             }
         }
     }
+
     public void attach(By locator, File file) {
-        if (file!= null) {
-                wd.findElement(locator).sendKeys(file.getAbsolutePath());
-            }
+        if (file != null) {
+            wd.findElement(locator).sendKeys(file.getAbsolutePath());
         }
+    }
 
     public void selectelement(String fieldname, String selectdropdown) {
         if (selectdropdown != null) {

@@ -13,7 +13,7 @@ public class TestBase {
 
     static {
         try {
-            app = new ApplicationManager(System.getProperty("browser",BrowserType.CHROME));
+            app = new ApplicationManager(System.getProperty("browser", BrowserType.CHROME));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

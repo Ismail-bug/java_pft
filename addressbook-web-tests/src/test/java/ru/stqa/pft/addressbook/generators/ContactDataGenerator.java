@@ -7,8 +7,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.thoughtworks.xstream.XStream;
 import ru.stqa.pft.addressbook.model.ContactData;
-import ru.stqa.pft.addressbook.model.GroupData;
-
 
 import java.io.File;
 import java.io.FileWriter;
@@ -18,73 +16,73 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-    public class ContactDataGenerator {
-        @Parameter(names = "-c", description = "Contact count")
-        public int count;
+public class ContactDataGenerator {
+    @Parameter(names = "-c", description = "Contact count")
+    public int count;
 
-        @Parameter (names = "-f", description = "Target file")
-        public String file;
+    @Parameter(names = "-f", description = "Target file")
+    public String file;
 
-        @Parameter (names = "-d", description = "Data format")
-        public String format;
+    @Parameter(names = "-d", description = "Data format")
+    public String format;
 
-        public static void main (String[] args) throws IOException {
-            ContactDataGenerator generator = new ContactDataGenerator();
-            JCommander jCommander = new JCommander(generator);
-            try {
-                jCommander.parse(args);
-            }catch (ParameterException ex){
-                jCommander.usage();
-                return;
-            }
-            generator.run();
-
+    public static void main(String[] args) throws IOException {
+        ContactDataGenerator generator = new ContactDataGenerator();
+        JCommander jCommander = new JCommander(generator);
+        try {
+            jCommander.parse(args);
+        } catch (ParameterException ex) {
+            jCommander.usage();
+            return;
         }
+        generator.run();
 
-        private void run() throws IOException {
-            List<ContactData> contacts = generateContacts(count);
-            if (format.equals("csv")) {
-                saveAsCsv(contacts, new File(file));
-            } else if (format.equals("xml")){
+    }
+
+    private void run() throws IOException {
+        List<ContactData> contacts = generateContacts(count);
+        if (format.equals("csv")) {
+            saveAsCsv(contacts, new File(file));
+        } else if (format.equals("xml")) {
             saveAsXml(contacts, new File(file));
-            } else if (format.equals("json")) {
-                saveAsJson(contacts, new File(file));
-        }else {
-            System.out.println("Unrecognized format "+format);
-        }
-        }
-
-        private void saveAsJson(List<ContactData> contacts, File file) throws IOException {
-            Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
-            String json = gson.toJson(contacts);
-            try (Writer writer = new FileWriter(file)) {
-                writer.write(json);
-            }
-        }
-
-        private void saveAsXml(List<ContactData> contacts, File file) throws IOException {
-            XStream xstream = new XStream();
-            xstream.processAnnotations(ContactData.class);
-            String xml = xstream.toXML(contacts);
-            try(Writer writer = new FileWriter(file)) {
-                writer.write(xml);
-            }
-        }
-
-        private void saveAsCsv(List<ContactData> contacts, File file) throws IOException {
-            try (Writer writer = new FileWriter(file)){
-                for (ContactData contact: contacts){
-                    writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n",contact.getFirstname(),contact.getMiddlename(),contact.getLastname(),contact.getNick(),contact.getTitle(),contact.getCompany(),contact.getAddress(),contact.getHomeaddress(),contact.getMobilenumber(),contact.getWorknumber(),contact.getFax(),contact.getMail(),contact.getReservemail(),contact.getExtramail(),contact.getDomen(),contact.getBirthday(),contact.getBirthdaymonth(),contact.getBirthdayyear(),contact.getAnniversaryday(),contact.getAnniversarymonth(),contact.getAnniversaryyear(),contact.getSelectgroup(),contact.getReserveaddress(),contact.getSecondhome(),contact.getNotes()));
-            }
-            }
-        }
-
-        private List<ContactData> generateContacts(int count) {
-            List<ContactData> contacts = new ArrayList<ContactData>();
-            for (int i = 0; i<count;i++){
-                contacts.add(new ContactData().withFirstname(String.format("test %s",i)).withMiddlename(String.format("test %s",i)).withLastname(String.format("test %s",i)).withNick(String.format("test %s",i)).withTitle(String.format("test %s",i)).withCompany(String.format("test %s",i)).withAddress(String.format("test %s",i)).withHomeaddress(String.format("test %s",i)).withMobilenumber(String.format("test %s",i)).withWorknumber(String.format("test %s",i)).withFax(String.format("test %s",i)).withMail(String.format("test %s",i)).withReservemail(String.format("test %s",i)).withExtramail(String.format("test %s",i)).withDomen(String.format("test %s",i)).withBirthday("1").withBirthdaymonth("January").withBirthdayyear("1901").withAnniversaryday("1").withAnniversarymonth("January").withAnniversaryyear("1901").withSelectgroup(String.format("test %s",i)).withReserveaddress(String.format("test %s",i)).withSecondhome(String.format("test %s",i)).withNotes(String.format("test %s",i)));
-            }
-            return contacts;
+        } else if (format.equals("json")) {
+            saveAsJson(contacts, new File(file));
+        } else {
+            System.out.println("Unrecognized format " + format);
         }
     }
+
+    private void saveAsJson(List<ContactData> contacts, File file) throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
+        String json = gson.toJson(contacts);
+        try (Writer writer = new FileWriter(file)) {
+            writer.write(json);
+        }
+    }
+
+    private void saveAsXml(List<ContactData> contacts, File file) throws IOException {
+        XStream xstream = new XStream();
+        xstream.processAnnotations(ContactData.class);
+        String xml = xstream.toXML(contacts);
+        try (Writer writer = new FileWriter(file)) {
+            writer.write(xml);
+        }
+    }
+
+    private void saveAsCsv(List<ContactData> contacts, File file) throws IOException {
+        try (Writer writer = new FileWriter(file)) {
+            for (ContactData contact : contacts) {
+                writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n", contact.getFirstname(), contact.getMiddlename(), contact.getLastname(), contact.getNick(), contact.getTitle(), contact.getCompany(), contact.getAddress(), contact.getHomeaddress(), contact.getMobilenumber(), contact.getWorknumber(), contact.getFax(), contact.getMail(), contact.getReservemail(), contact.getExtramail(), contact.getDomen(), contact.getBirthday(), contact.getBirthdaymonth(), contact.getBirthdayyear(), contact.getAnniversaryday(), contact.getAnniversarymonth(), contact.getAnniversaryyear(), contact.getSelectgroup(), contact.getReserveaddress(), contact.getSecondhome(), contact.getNotes()));
+            }
+        }
+    }
+
+    private List<ContactData> generateContacts(int count) {
+        List<ContactData> contacts = new ArrayList<ContactData>();
+        for (int i = 0; i < count; i++) {
+            contacts.add(new ContactData().withFirstname(String.format("test %s", i)).withMiddlename(String.format("test %s", i)).withLastname(String.format("test %s", i)).withNick(String.format("test %s", i)).withTitle(String.format("test %s", i)).withCompany(String.format("test %s", i)).withAddress(String.format("test %s", i)).withHomeaddress(String.format("test %s", i)).withMobilenumber(String.format("test %s", i)).withWorknumber(String.format("test %s", i)).withFax(String.format("test %s", i)).withMail(String.format("test %s", i)).withReservemail(String.format("test %s", i)).withExtramail(String.format("test %s", i)).withDomen(String.format("test %s", i)).withBirthday("1").withBirthdaymonth("January").withBirthdayyear("1901").withAnniversaryday("1").withAnniversarymonth("January").withAnniversaryyear("1901").withSelectgroup(String.format("test %s", i)).withReserveaddress(String.format("test %s", i)).withSecondhome(String.format("test %s", i)).withNotes(String.format("test %s", i)));
+        }
+        return contacts;
+    }
+}
 
