@@ -5,9 +5,19 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import ru.stqa.pft.addressbook.appmanager.ApplicationManager;
 
+import java.io.FileNotFoundException;
+
 public class TestBase {
 
-    public static ApplicationManager app = new ApplicationManager(BrowserType.FIREFOX);
+    public static ApplicationManager app;
+
+    static {
+        try {
+            app = new ApplicationManager(System.getProperty("browser",BrowserType.CHROME));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
     @BeforeSuite(alwaysRun = true)
     public void setUp() throws Exception {
