@@ -4,67 +4,117 @@ package ru.stqa.pft.addressbook.model;
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 import java.io.File;
 import java.util.Objects;
 
 @XStreamAlias("contact")
+@Entity
+@Table(name="addressbook")
 public class ContactData {
     @XStreamOmitField
+    @Id
+    @Column(name="id")
     public int id = Integer.MAX_VALUE;
     @Expose
+    @Column(name="firstname")
     public String firstname;
     @Expose
+    @Column(name="middlename")
     public String middlename;
     @Expose
+    @Column(name="lastname")
     public String lastname;
     @Expose
+    @Column(name="nickname")
     public String nick;
     @Expose
+    @Column(name="title")
     public String title;
     @Expose
+    @Column(name="company")
     public String company;
     @Expose
+    @Column(name="address")
+    @Type(type = "text")
     public String address;
     @Expose
+    @Column(name="home")
+    @Type(type="text")
     public String homeaddress;
     @Expose
+    @Column(name="mobile")
+    @Type(type="text")
     public String mobilenumber;
     @Expose
+    @Column(name="work")
+    @Type(type="text")
     public String worknumber;
     @Expose
+    @Column(name="fax")
+    @Type(type="text")
     public String fax;
     @Expose
+    @Column(name="email")
+    @Type(type="text")
     public String mail;
     @Expose
+    @Column(name="email2")
+    @Type(type="text")
     public String reservemail;
     @Expose
+    @Column(name="email3")
+    @Type(type="text")
     public String extramail;
     @Expose
+    @Column(name="homepage")
+    @Type(type="text")
     public String domen;
     @Expose
+    @Column(name="bday")
+    @Transient
     public String birthday;
     @Expose
+    @Column(name="bmonth")
     public String birthdaymonth;
     @Expose
+    @Column(name="byear")
     public String birthdayyear;
     @Expose
+    @Column(name="aday")
+    @Transient
     public String anniversaryday;
     @Expose
+    @Column(name="amonth")
     public String anniversarymonth;
     @Expose
+    @Column(name="ayear")
     public String anniversaryyear;
     @Expose
+    @Transient
     public String selectgroup;
     @Expose
+    @Column(name="address2")
+    @Type(type="text")
     public String reserveaddress;
     @Expose
+    @Column(name="notes")
+    @Type(type="text")
     public String notes;
     @Expose
+    @Column(name="phone2")
+    @Type(type="text")
     public String secondhome;
+    @Transient
     public String allPhones;
+    @Transient
     public String allMails;
-    public File photo;
+    @Column(name="photo")
+    @Type(type="text")
+    @Transient
+    public String photo;
 
 
     public int getId() {
@@ -180,7 +230,7 @@ public class ContactData {
     }
 
     public File getPhoto() {
-        return photo;
+        return new File(photo);
     }
 
 
@@ -325,7 +375,7 @@ public class ContactData {
     }
 
     public ContactData withPhoto(File photo) {
-        this.photo = photo;
+        this.photo = photo.getPath();
         return this;
     }
 
@@ -343,13 +393,12 @@ public class ContactData {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ContactData that = (ContactData) o;
-        return id == that.id && Objects.equals(firstname, that.firstname) && Objects.equals(lastname, that.lastname);
+        return id == that.id && Objects.equals(firstname, that.firstname) && Objects.equals(middlename, that.middlename) && Objects.equals(lastname, that.lastname) && Objects.equals(nick, that.nick) && Objects.equals(title, that.title) && Objects.equals(company, that.company) && Objects.equals(address, that.address) && Objects.equals(homeaddress, that.homeaddress) && Objects.equals(mobilenumber, that.mobilenumber) && Objects.equals(worknumber, that.worknumber) && Objects.equals(fax, that.fax) && Objects.equals(mail, that.mail) && Objects.equals(reservemail, that.reservemail) && Objects.equals(extramail, that.extramail);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstname, lastname);
+        return Objects.hash(id, firstname, middlename, lastname, nick, title, company, address, homeaddress, mobilenumber, worknumber, fax, mail, reservemail, extramail);
     }
-
 }
 
