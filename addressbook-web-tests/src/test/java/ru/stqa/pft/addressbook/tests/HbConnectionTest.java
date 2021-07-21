@@ -50,9 +50,10 @@ public class HbConnectionTest {
     public void testHbContactConnection(){
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        List<ContactData> result = session.createQuery( "from ContactData where deprected ='0000-00-00'" ).list();
+        List<ContactData> result = session.createQuery( "from ContactData" ).list();
         for ( ContactData contact : result ) {
             System.out.println(contact);
+            System.out.println(contact.getGroups());
         }
         session.getTransaction().commit();
         session.close();

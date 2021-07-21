@@ -51,12 +51,12 @@ public class ContactHelper extends HelperBase {
         selectelement("amonth", contactData.getAnniversarymonth());
         type(By.name("ayear"), contactData.getAnniversaryyear());
 
-        if (creation) {
-            selectelement("new_group", contactData.getSelectgroup());
-        } else {
-            Assert.assertFalse(isElementPresent(By.name("new_group")));
+       // if (creation) {
+        //    selectelement("new_group", contactData.getSelectgroup());
+       // } else {
+      //      Assert.assertFalse(isElementPresent(By.name("new_group")));
 
-        }
+      //  }
         type(By.name("address2"), contactData.getReserveaddress());
         type(By.name("phone2"), contactData.getSecondhome());
         type(By.name("notes"), contactData.getNotes());

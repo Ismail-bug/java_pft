@@ -8,7 +8,9 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.File;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @XStreamAlias("contact")
 @Entity
@@ -93,9 +95,6 @@ public class ContactData {
     @Column(name="ayear")
     public String anniversaryyear;
     @Expose
-    @Transient
-    public String selectgroup;
-    @Expose
     @Column(name="address2")
     @Type(type="text")
     public String reserveaddress;
@@ -115,6 +114,11 @@ public class ContactData {
     @Type(type="text")
     @Transient
     public String photo;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "address_in_groups",
+            joinColumns = @JoinColumn(name = "id"),
+            inverseJoinColumns = @JoinColumn(name = "group_id"))
+    private Set<GroupData>groups = new HashSet<GroupData>();
 
 
     public int getId() {
@@ -205,10 +209,6 @@ public class ContactData {
         return anniversaryyear;
     }
 
-    public String getSelectgroup() {
-        return selectgroup;
-    }
-
     public String getReserveaddress() {
         return reserveaddress;
     }
@@ -233,6 +233,9 @@ public class ContactData {
         return new File(photo);
     }
 
+    public Groups getGroups() {
+        return new Groups(groups);
+    }
 
     public ContactData withId(int id) {
         this.id = id;
@@ -341,11 +344,6 @@ public class ContactData {
 
     public ContactData withAnniversaryyear(String anniversaryyear) {
         this.anniversaryyear = anniversaryyear;
-        return this;
-    }
-
-    public ContactData withSelectgroup(String selectgroup) {
-        this.selectgroup = selectgroup;
         return this;
     }
 
