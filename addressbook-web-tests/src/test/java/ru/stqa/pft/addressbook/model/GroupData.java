@@ -12,13 +12,12 @@ import java.util.Set;
 
 @XStreamAlias("group")
 @Entity
-@Table(name="group_list")
+@Table(name = "group_list")
 public class GroupData {
     @XStreamOmitField
     @Id
     @Column(name = "group_id")
     private int id = Integer.MAX_VALUE;
-
 
 
     @Expose
@@ -32,7 +31,7 @@ public class GroupData {
     @Column(name = "group_footer")
     @Type(type = "text")
     private String footer;
-    @ManyToMany(mappedBy = "groups")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "groups")
     private Set<ContactData> contacts = new HashSet<ContactData>();
 
     public int getId() {
@@ -82,6 +81,7 @@ public class GroupData {
                 ", name='" + name + '\'' +
                 '}';
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

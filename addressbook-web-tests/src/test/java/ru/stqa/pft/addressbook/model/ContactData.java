@@ -14,111 +14,114 @@ import java.util.Set;
 
 @XStreamAlias("contact")
 @Entity
-@Table(name="addressbook")
+@Table(name = "addressbook")
 public class ContactData {
     @XStreamOmitField
     @Id
-    @Column(name="id")
+    @Column(name = "id")
     public int id = Integer.MAX_VALUE;
     @Expose
-    @Column(name="firstname")
+    @Column(name = "firstname")
     public String firstname;
     @Expose
-    @Column(name="middlename")
+    @Column(name = "middlename")
     public String middlename;
     @Expose
-    @Column(name="lastname")
+    @Column(name = "lastname")
     public String lastname;
     @Expose
-    @Column(name="nickname")
+    @Column(name = "nickname")
     public String nick;
     @Expose
-    @Column(name="title")
+    @Column(name = "title")
     public String title;
     @Expose
-    @Column(name="company")
+    @Column(name = "company")
     public String company;
     @Expose
-    @Column(name="address")
+    @Column(name = "address")
     @Type(type = "text")
     public String address;
     @Expose
-    @Column(name="home")
-    @Type(type="text")
+    @Column(name = "home")
+    @Type(type = "text")
     public String homeaddress;
     @Expose
-    @Column(name="mobile")
-    @Type(type="text")
+    @Column(name = "mobile")
+    @Type(type = "text")
     public String mobilenumber;
     @Expose
-    @Column(name="work")
-    @Type(type="text")
+    @Column(name = "work")
+    @Type(type = "text")
     public String worknumber;
     @Expose
-    @Column(name="fax")
-    @Type(type="text")
+    @Column(name = "fax")
+    @Type(type = "text")
     public String fax;
     @Expose
-    @Column(name="email")
-    @Type(type="text")
+    @Column(name = "email")
+    @Type(type = "text")
     public String mail;
     @Expose
-    @Column(name="email2")
-    @Type(type="text")
+    @Column(name = "email2")
+    @Type(type = "text")
     public String reservemail;
     @Expose
-    @Column(name="email3")
-    @Type(type="text")
+    @Column(name = "email3")
+    @Type(type = "text")
     public String extramail;
     @Expose
-    @Column(name="homepage")
-    @Type(type="text")
+    @Column(name = "homepage")
+    @Type(type = "text")
     public String domen;
     @Expose
-    @Column(name="bday")
+    @Column(name = "bday")
     @Transient
     public String birthday;
     @Expose
-    @Column(name="bmonth")
+    @Column(name = "bmonth")
     public String birthdaymonth;
     @Expose
-    @Column(name="byear")
+    @Column(name = "byear")
     public String birthdayyear;
     @Expose
-    @Column(name="aday")
+    @Column(name = "aday")
     @Transient
     public String anniversaryday;
     @Expose
-    @Column(name="amonth")
+    @Column(name = "amonth")
     public String anniversarymonth;
     @Expose
-    @Column(name="ayear")
+    @Column(name = "ayear")
     public String anniversaryyear;
     @Expose
-    @Column(name="address2")
-    @Type(type="text")
+    @Transient
+    private String group;
+    @Expose
+    @Column(name = "address2")
+    @Type(type = "text")
     public String reserveaddress;
     @Expose
-    @Column(name="notes")
-    @Type(type="text")
+    @Column(name = "notes")
+    @Type(type = "text")
     public String notes;
     @Expose
-    @Column(name="phone2")
-    @Type(type="text")
+    @Column(name = "phone2")
+    @Type(type = "text")
     public String secondhome;
     @Transient
     public String allPhones;
     @Transient
     public String allMails;
-    @Column(name="photo")
-    @Type(type="text")
+    @Column(name = "photo")
+    @Type(type = "text")
     @Transient
     public String photo;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "address_in_groups",
             joinColumns = @JoinColumn(name = "id"),
             inverseJoinColumns = @JoinColumn(name = "group_id"))
-    private Set<GroupData>groups = new HashSet<GroupData>();
+    private Set<GroupData> groups = new HashSet<GroupData>();
 
 
     public int getId() {
@@ -209,6 +212,14 @@ public class ContactData {
         return anniversaryyear;
     }
 
+    public String getGroup() {
+        return group;
+    }
+
+    public Groups getGroups() {
+        return new Groups(groups);
+    }
+
     public String getReserveaddress() {
         return reserveaddress;
     }
@@ -231,10 +242,6 @@ public class ContactData {
 
     public File getPhoto() {
         return new File(photo);
-    }
-
-    public Groups getGroups() {
-        return new Groups(groups);
     }
 
     public ContactData withId(int id) {
@@ -344,6 +351,11 @@ public class ContactData {
 
     public ContactData withAnniversaryyear(String anniversaryyear) {
         this.anniversaryyear = anniversaryyear;
+        return this;
+    }
+
+    public ContactData withGroup(String group) {
+        this.group = group;
         return this;
     }
 

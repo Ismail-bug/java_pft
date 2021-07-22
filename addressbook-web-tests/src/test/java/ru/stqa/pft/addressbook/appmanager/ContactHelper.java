@@ -3,12 +3,16 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.testng.Assert.assertTrue;
 
 
 public class ContactHelper extends HelperBase {
@@ -51,12 +55,12 @@ public class ContactHelper extends HelperBase {
         selectelement("amonth", contactData.getAnniversarymonth());
         type(By.name("ayear"), contactData.getAnniversaryyear());
 
-       // if (creation) {
+        // if (creation) {
         //    selectelement("new_group", contactData.getSelectgroup());
-       // } else {
-      //      Assert.assertFalse(isElementPresent(By.name("new_group")));
+        // } else {
+        //      Assert.assertFalse(isElementPresent(By.name("new_group")));
 
-      //  }
+        //  }
         type(By.name("address2"), contactData.getReserveaddress());
         type(By.name("phone2"), contactData.getSecondhome());
         type(By.name("notes"), contactData.getNotes());
@@ -200,5 +204,42 @@ public class ContactHelper extends HelperBase {
         wd.navigate().back();
         return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname).withHomeaddress(home).withMobilenumber(mobile).withWorknumber(work).withReserveaddress(phone2).withAddress(address).withMail(email).withReservemail(email2).withExtramail(email3);
     }
+
+    public void addContactToGroup(ContactData contact, GroupData addToGroup) {
+        selectContactById(contact.getId());
+        selectGroupToAdd(addToGroup);
+        addTo();
+        goToAddGroupPage(addToGroup.getId());
+    }
+
+    public void goToAddGroupPage(int id) {
+        wd.findElement(By.cssSelector("a[href='./?group=" + id + "']")).click();
+    }
+
+    private void addTo() {
+        wd.findElement(By.name("add")).click();
+    }
+
+    private void selectGroupToAdd(GroupData group) {
+        new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(group.getName());
+    }
+
+    public void contactGroupPage(ContactData cRemove) {
+        Select select = new Select(wd.findElement(By.name("group")));
+        select.selectByVisibleText(cRemove.getGroups().iterator().next().getName());
+    }
+
+    public void removeFromGroup(ContactData cRemove) {
+        Assert.assertEquals(cRemove.getGroups().size(), 1);
+        selectContactById(cRemove.getId());
+        click(By.name("remove"));
+        confirmationRemoveGroup(cRemove);
+    }
+
+    private void confirmationRemoveGroup(ContactData cRemove) {
+        wd.findElement(By.tagName("h1")).getText().equals("Groups");
+        assertTrue(isElementPresent(By.linkText("group page \"" + cRemove.getGroups().iterator().next().getName() + "\"")));
+    }
 }
+
 
