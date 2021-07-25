@@ -7,6 +7,7 @@ import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
+import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -36,15 +37,25 @@ public class RemoveContactFromGroupTests extends TestBase {
 
     @Test
     public void testRemoveContactFromGroup() {
-        contacts = app.db().contacts();
-        groups = app.db().groups();
-        ContactData cRemove = contacts.iterator().next();
-        GroupData gRemove = groups.iterator().next();
+        GroupData gRemove = app.db().groups().iterator().next();
+        int gRemoveId = gRemove.getId();
+        ContactData cRemove = gRemove.getContacts().iterator().next();
+        if (gRemove.getContacts().size() == 0) {
+            app.goTo().gotoHomePage();
+            app.contact().addContactToGroup(cRemove, gRemove);
+            app.goTo().gotoHomePage();
+        }
         app.goTo().gotoHomePage();
         app.contact().contactGroupPage(cRemove);
         app.contact().removeFromGroup(cRemove);
-        assertThat(cRemove.getGroups(), not(cRemove));
-        assertThat(gRemove.getContacts(), not(gRemove));
+        Groups allGroups = app.db().groups();
+        for (GroupData group: allGroups) {
+            if (group.getId() == gRemoveId) {
+                gRemove = group;
+            }
+        }
+        assertThat(gRemove.getContacts(), not(hasItem(cRemove)));
     }
-}
+    }
+
 
