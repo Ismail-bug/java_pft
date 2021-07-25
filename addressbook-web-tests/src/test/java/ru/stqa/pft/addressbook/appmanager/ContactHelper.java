@@ -221,7 +221,9 @@ public class ContactHelper extends HelperBase {
     }
 
     private void selectGroupToAdd(GroupData group) {
-        new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(group.getName());
+        wd.findElement(By.name("to_group")).click();
+        int id = group.getId();
+        new Select(wd.findElement(By.name("to_group"))).selectByValue(Integer.toString(group.getId()));
     }
 
     public void contactGroupPage(ContactData cRemove) {
