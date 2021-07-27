@@ -231,16 +231,17 @@ public class ContactHelper extends HelperBase {
         select.selectByVisibleText(cRemove.getGroups().iterator().next().getName());
     }
 
-    public void removeFromGroup(ContactData cRemove) {
-        Assert.assertEquals(cRemove.getGroups().size(), 1);
-        selectContactById(cRemove.getId());
-        click(By.name("remove"));
-        confirmationRemoveGroup(cRemove);
+    public void removeFromGroup(ContactData contact, GroupData group) {
+        wd.findElement(By.name("group")).click();
+        new Select(wd.findElement(By.name("group"))).selectByValue(Integer.toString(group.getId()));
+        wd.findElement(By.name("group")).click();
+        wd.findElement(By.id(Integer.toString(contact.getId()))).click();
+        wd.findElement(By.name("remove")).click();
     }
 
-    private void confirmationRemoveGroup(ContactData cRemove) {
+    private void confirmationRemoveGroup(ContactData contact) {
         wd.findElement(By.tagName("h1")).getText().equals("Groups");
-        assertTrue(isElementPresent(By.linkText("group page \"" + cRemove.getGroups().iterator().next().getName() + "\"")));
+        assertTrue(isElementPresent(By.linkText("group page \"" + contact.getGroups().iterator().next().getName() + "\"")));
     }
 }
 
