@@ -39,15 +39,15 @@ public class RemoveContactFromGroupTests extends TestBase {
     public void testRemoveContactFromGroup() {
         GroupData gRemove = app.db().groups().iterator().next();
         int gRemoveId = gRemove.getId();
-        ContactData cRemove = gRemove.getContacts().iterator().next();
         if (gRemove.getContacts().size() == 0) {
             app.goTo().gotoHomePage();
-            app.contact().addContactToGroup(cRemove, gRemove);
+            app.contact().addContactToGroup(app.db().contacts().iterator().next(),gRemove);
             app.goTo().gotoHomePage();
         }
+        ContactData cRemove = gRemove.getContacts().iterator().next();
         app.goTo().gotoHomePage();
         app.contact().contactGroupPage(cRemove);
-        app.contact().removeFromGroup(cRemove);
+        app.contact().removeFromGroup(cRemove,gRemove);
         Groups allGroups = app.db().groups();
         for (GroupData group: allGroups) {
             if (group.getId() == gRemoveId) {
