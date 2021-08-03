@@ -1,0 +1,50 @@
+> Task :compileJava NO-SOURCE
+> Task :processResources NO-SOURCE
+> Task :classes UP-TO-DATE
+> Task :compileTestJava UP-TO-DATE
+> Task :processTestResources NO-SOURCE
+> Task :testClasses UP-TO-DATE
+> Task :test
+LOCALAPPDATA = C:\Users\Firefox\AppData\Local
+PROCESSOR_LEVEL = 6
+FP_NO_HOST_CHECK = NO
+USERDOMAIN = LENOVO
+LOGONSERVER = \\LENOVO
+JAVA_HOME = C:\Program Files\AdoptOpenJDK\jdk-8.0.292.10-openj9\
+SESSIONNAME = Console
+ALLUSERSPROFILE = C:\ProgramData
+PROCESSOR_ARCHITECTURE = AMD64
+PSModulePath = C:\Windows\system32\WindowsPowerShell\v1.0\Modules\
+SystemDrive = C:
+COMMPath = C:\Program Files\Lenovo\Communications Utility
+TVT = C:\Program Files (x86)\Lenovo
+APPDATA = C:\Users\Firefox\AppData\Roaming
+USERNAME = ?Hermes?
+ProgramFiles(x86) = C:\Program Files (x86)
+CommonProgramFiles = C:\Program Files\Common Files
+Path = C:\Program Files\AdoptOpenJDK\jdk-8.0.292.10-openj9\\bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\Broadcom\Broadcom 802.11 Network Adapter\Driver;C:\PROGRAM FILES (X86)\INTEL\ICLS CLIENT\;C:\PROGRAM FILES\INTEL\ICLS CLIENT\;C:\Windows\SYSTEM32;C:\Windows;C:\Windows\SYSTEM32\WBEM;C:\Windows\SYSTEM32\WINDOWSPOWERSHELL\V1.0\;C:\PROGRAM FILES (X86)\INTEL\OPENCL SDK\2.0\BIN\X86;C:\PROGRAM FILES (X86)\INTEL\OPENCL SDK\2.0\BIN\X64;C:\PROGRAM FILES\INTEL\INTEL(R) MANAGEMENT ENGINE COMPONENTS\DAL;C:\PROGRAM FILES\INTEL\INTEL(R) MANAGEMENT ENGINE COMPONENTS\IPT;C:\PROGRAM FILES (X86)\INTEL\INTEL(R) MANAGEMENT ENGINE COMPONENTS\DAL;C:\PROGRAM FILES (X86)\INTEL\INTEL(R) MANAGEMENT ENGINE COMPONENTS\IPT;C:\Program Files\Lenovo\Bluetooth Software\;C:\Program Files\Lenovo\Bluetooth Software\syswow64;C:\Program Files (x86)\Skype\Phone\;C:\Program Files\Git\cmd
+PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+OS = Windows_NT
+COMPUTERNAME = LENOVO
+PROCESSOR_REVISION = 3a09
+CommonProgramW6432 = C:\Program Files\Common Files
+ComSpec = C:\Windows\system32\cmd.exe
+ProgramData = C:\ProgramData
+ProgramW6432 = C:\Program Files
+HOMEPATH = \Users\Firefox
+SystemRoot = C:\Windows
+TEMP = C:\Users\Firefox\AppData\Local\Temp
+HOMEDRIVE = C:
+PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 58 Stepping 9, GenuineIntel
+USERPROFILE = C:\Users\Firefox
+TMP = C:\Users\Firefox\AppData\Local\Temp
+CommonProgramFiles(x86) = C:\Program Files (x86)\Common Files
+ProgramFiles = C:\Program Files
+PUBLIC = C:\Users\Public
+NUMBER_OF_PROCESSORS = 4
+windir = C:\Windows
+=:: = ::\
+IDEA_INITIAL_DIRECTORY = C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2021.1.1\bin
+BUILD SUCCESSFUL in 6s
+2 actionable tasks: 1 executed, 1 up-to-date
+17:46:57: Task execution finished ':test --tests "ru.stqa.pft.simple.TestEnv"'.
